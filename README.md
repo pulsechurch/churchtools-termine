@@ -18,7 +18,7 @@ Live im Einsatz: [pulsechurch.de/termine](https://www.pulsechurch.de/termine)
 - Mehrtägige und ganztägige Termine, Bildausschnitt nach dem Fokuspunkt aus ChurchTools
 - Alte Links funktionieren weiter, wenn ein Serientermin in ChurchTools einzeln geändert wurde
 
-## Einrichten in 3 Schritten
+## Einrichten in 4 Schritten
 
 ### 1. Zugang in ChurchTools anlegen
 
@@ -35,7 +35,17 @@ Die Website braucht einen ChurchTools-Benutzer, der die Kalender lesen darf.
 
 Jeder Kalender hat in ChurchTools eine Nummer. Du findest sie z.B. im Abo-Link des Kalenders (`…&id=2` → ID 2).
 
-### 3. Code in die Website einfügen
+### 3. Website in ChurchTools freigeben (CORS)
+
+Der Browser lädt die Termine direkt aus ChurchTools. Das erlaubt er nur, wenn ChurchTools deine Website als erlaubte Adresse kennt.
+
+1. Öffne in ChurchTools die **Systemeinstellungen → Integrationen → Cross-Origin Resource Sharing** ([Anleitung in der ChurchTools Academy](https://churchtools.academy/en/help/system-settings/api-en/cors/)).
+2. Trage die Adresse deiner Website ein, z.B. `https://www.meinegemeinde.de`. Gibt es sie mit und ohne `www.`, trage beide ein.
+3. **Für die Vorschau im Squarespace-Editor** zusätzlich die interne Squarespace-Adresse eintragen, z.B. `https://name-1234.squarespace.com`. Du findest sie in Squarespace unter **Einstellungen → Domains**. Ohne diesen Eintrag bleiben die Termine in der Vorschau leer, auf der veröffentlichten Seite funktionieren sie trotzdem.
+
+Fehlt die Freigabe, zeigt die Seite statt der Termine „Unsere Termine machen gerade eine kurze Pause“. In der Browser-Konsole steht dann ein CORS-Fehler.
+
+### 4. Code in die Website einfügen
 
 Füge in Squarespace auf der Terminseite einen Block **„Code“** ein und kopiere den Inhalt von [`examples/termine.html`](examples/termine.html) hinein.
 Trage dann oben deine ChurchTools-Adresse, den Token und deine Kalender ein. Fertig.
@@ -102,7 +112,7 @@ Automatische Updates gibt es dann nicht mehr.
 
 Die Newsletter-Hilfe zeigt die Termine der nächsten Wochen. Jeder Termin lässt sich mit einem Klick kopieren und **mit Formatierung direkt in MailChimp einfügen**. Das HTML ist auf E-Mail-Programme abgestimmt, auch auf Outlook.
 
-Einrichten: Lege auf deiner Website eine **nicht verlinkte** Seite an und füge den Inhalt von [`examples/newsletter.html`](examples/newsletter.html) als Code-Block ein.
+Einrichten: Lege auf deiner Website eine **nicht verlinkte** Seite an und füge den Inhalt von [`examples/newsletter.html`](examples/newsletter.html) als Code-Block ein. Zugang und CORS-Freigabe sind dieselben wie bei der Terminseite.
 
 | Einstellung | Pflicht | Bedeutung |
 |---|---|---|

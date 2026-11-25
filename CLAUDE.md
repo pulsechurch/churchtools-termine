@@ -28,6 +28,7 @@ Die README richtet sich an Gemeinden, die die Skripte einbinden. Diese Datei bes
 ## Testen
 
 - Lokal: HTML-Datei mit `window.CT_CONFIG` und `<script src="termine.js">` anlegen (Name `*.local.html`). Aufruf über `file://` braucht im Browser abgeschaltete Web-Security, sonst blockiert CORS die ChurchTools-API, z.B. Edge headless: `msedge --headless=new --disable-web-security --user-data-dir=<tmp> --virtual-time-budget=15000 --dump-dom|--screenshot <datei>`.
+- **CORS**: Die Skripte rufen die ChurchTools-API direkt aus dem Browser auf. In ChurchTools muss jede Website-Adresse freigegeben sein (Systemeinstellungen → Integrationen → Cross-Origin Resource Sharing), für die Squarespace-Vorschau zusätzlich die interne Adresse `https://….squarespace.com`. Fehlt die Freigabe, erscheint die Fehlermeldung `.ct-error`; die Ursache steht nur in der Konsole.
 - Optische Änderungen per Screenshot-Vergleich alt/neu prüfen (Pixel-Diff).
 - Referenz-Installation: pulsechurch.de/termine (ChurchTools `https://pulsechurch.church.tools`, Kalender 2, 44, 38).
 
