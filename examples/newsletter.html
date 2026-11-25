@@ -1,0 +1,22 @@
+<!--
+    ChurchTools Termine · https://github.com/pulsechurch/churchtools-termine
+
+    Newsletter-Hilfe – diesen Code in einen Code-Block auf einer nicht verlinkten Seite der Website einfügen.
+    Anpassen musst du nur den Teil zwischen den Markierungen. Alles Weitere steht in der README.
+-->
+<div id="ct-newsletter"></div>
+<script>
+window.CT_CONFIG = {
+    // ===== Pflicht =====
+    churchToolsUrl: 'https://meinegemeinde.church.tools',
+    apiToken: 'HIER-DEN-LOGIN-TOKEN-EINFÜGEN',
+    calendarIds: [2],
+    terminePageUrl: 'https://www.meinegemeinde.de/termine',   // Adresse deiner Terminseite (für „Link kopieren“)
+
+    // ===== Optional =====
+    daysAhead: 50   // Termine der nächsten 50 Tage
+};
+</script>
+<!-- Ab hier nichts ändern -->
+<script src="https://cdn.jsdelivr.net/gh/pulsechurch/churchtools-termine@1/newsletter.js"
+        onerror="var s=document.createElement('script');s.src='https://pulsechurch.github.io/churchtools-termine/v1/newsletter.js';document.body.appendChild(s);"></script>

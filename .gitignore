@@ -1,0 +1,10 @@
+# Lokale Testseiten mit echten Zugangsdaten
+*.local.html
+
+# Alte Einzeldateien und Sicherheitskopien (vor dem Umzug nach GitHub)
+/termine.html
+/newsletter.html
+/termine [0-9]*.html
+/newsletter [0-9]*.html
+
+.claude/settings.local.json

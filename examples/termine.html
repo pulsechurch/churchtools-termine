@@ -1,0 +1,42 @@
+<!--
+    ChurchTools Termine · https://github.com/pulsechurch/churchtools-termine
+
+    Terminseite – diesen Code komplett in einen Code-Block der Website einfügen (z.B. Squarespace: Block „Code“).
+    Anpassen musst du nur den Teil zwischen den Markierungen. Alles Weitere steht in der README.
+-->
+<div id="ct-termine"></div>
+<script>
+window.CT_CONFIG = {
+    // ===== Pflicht =====
+    churchToolsUrl: 'https://meinegemeinde.church.tools',
+    apiToken: 'HIER-DEN-LOGIN-TOKEN-EINFÜGEN',
+
+    // Kalender, deren Termine angezeigt werden (ID aus ChurchTools, Name und Symbol für die Buttons)
+    calendars: [
+        { id: 2, label: 'Veranstaltungen', icon: '📅' },
+        { id: 44, label: 'Kids', icon: '👶' }
+    ],
+
+    // ===== Optional =====
+    headerTitle: 'Bevorstehende Events.',
+    headerImageUrl: 'https://meinegemeinde.de/bilder/header.jpg',
+    primaryColor: '#FCC927',
+
+    // Weitere Filter im Menü „Weitere Filter“ (Suche im Termintitel)
+    filters: [
+        { label: 'Gottesdienste', filter: 'Gottesdienst' }
+    ],
+
+    // Enthält der Link eines Termins diese Adresse, erscheint ein Button mit dieser Beschriftung
+    linkButtons: [
+        { address: 'meinegemeinde.de', label: 'Weitere Infos' },
+        { address: 'forms.office.com', label: 'Zur Anmeldung' }
+    ],
+
+    // Hinweis unten im Dialog „Kalender abonnieren“ (E-Mail-Adressen werden vor Spam-Robotern geschützt)
+    subscriptionSupportText: 'Brauchst du Unterstützung, wende dich gerne an info@meinegemeinde.de'
+};
+</script>
+<!-- Ab hier nichts ändern: lädt die Terminseite (bei Ausfall von jsDelivr automatisch von GitHub Pages) -->
+<script src="https://cdn.jsdelivr.net/gh/pulsechurch/churchtools-termine@1/termine.js"
+        onerror="var s=document.createElement('script');s.src='https://pulsechurch.github.io/churchtools-termine/v1/termine.js';document.body.appendChild(s);"></script>

@@ -1,0 +1,72 @@
+# Bei jeder neuen Version (Tag v1.2.3):
+# 1. Ersatzquelle auf GitHub Pages aktualisieren: pro Hauptversion der neueste Stand unter /v1/, /v2/, ...
+# 2. Cache von jsDelivr leeren, damit @1 sofort auf den neuen Stand zeigt
+# Bei jedem Push auf main: nur den jsDelivr-Cache für @main leeren (Testseite)
+name: Veröffentlichen
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  purge-main:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: jsDelivr-Cache für @main leeren
+        run: |
+          for file in termine.js newsletter.js; do
+            curl -fsS "https://purge.jsdelivr.net/gh/${{ github.repository }}@main/$file" || true
+            echo
+          done
+
+  deploy:
+    if: github.ref != 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Dateien pro Hauptversion zusammenstellen
+        run: |
+          mkdir -p _site
+          for major in $(git tag -l 'v*' | sed -E 's/^v([0-9]+).*/\1/' | sort -un); do
+            latest=$(git tag -l "v$major.*" --sort=-v:refname | head -1)
+            mkdir -p "_site/v$major"
+            for file in termine.js newsletter.js; do
+              git show "$latest:$file" > "_site/v$major/$file"
+            done
+            echo "v$major → $latest"
+          done
+          echo '<meta http-equiv="refresh" content="0; url=https://github.com/${{ github.repository }}">' > _site/index.html
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: jsDelivr-Cache leeren
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          major=$(echo "${GITHUB_REF_NAME}" | sed -E 's/^v([0-9]+).*/\1/')
+          for file in termine.js newsletter.js; do
+            curl -fsS "https://purge.jsdelivr.net/gh/${{ github.repository }}@$major/$file" || true
+            echo
+          done
