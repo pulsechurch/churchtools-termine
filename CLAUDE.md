@@ -14,6 +14,8 @@ Die README richtet sich an Gemeinden, die die Skripte einbinden. Diese Datei bes
 - **Erst testen, dann Version setzen**: Änderungen gehen auf `main` und werden auf der Testseite (`@main`) live auf der Website bzw. in MailChimp geprüft. Lokale Tests allein reichen nicht. Erst nach bestätigtem Live-Test wird ein Versions-Tag gesetzt.
 - **Parser in beiden Dateien pflegen**: Der Markdown-Parser existiert in `termine.js` (Website) und `newsletter.js` (E-Mail-Variante). Änderungen an Regeln in beiden Dateien umsetzen.
 - **Sprache**: Oberfläche, Kommentare, README und Commit-Nachrichten auf Deutsch.
+- **Öffentliches Repo, Nutzer lesen mit**: Commit-Nachrichten und Release-Texte beschreiben, was sich für die Gemeinden ändert (z.B. „Anleitung: Login-Token finden“), nicht interne Arbeitsschritte. Reine Änderungen an dieser Datei nicht als eigenen Commit, sondern mit der zugehörigen Änderung zusammen.
+- **Anbieter-neutral**: README und Vorlagen sprechen allgemein von Website bzw. Homepage-Baukasten; Squarespace nur als Beispiel.
 
 ## Versionen und Auslieferung
 

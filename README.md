@@ -1,9 +1,7 @@
 # ChurchTools Termine
 
 Zeigt die Termine aus deinen **ChurchTools-Kalendern** als schöne Terminseite auf deiner Website – mit Bildern, Detailseiten, Filtern und Kalender-Abo.
-Gebaut für **Squarespace**, funktioniert aber auf jeder Website, auf der man HTML einfügen kann.
-
-![Terminseite](docs/screenshot.png)
+Funktioniert auf jeder Website, auf der man eigenen HTML-Code einfügen kann – z.B. in Homepage-Baukästen wie Squarespace, Wix, Jimdo oder WordPress.
 
 Live im Einsatz: [pulsechurch.de/termine](https://www.pulsechurch.de/termine)
 
@@ -26,7 +24,8 @@ Die Website braucht einen ChurchTools-Benutzer, der die Kalender lesen darf.
 
 1. Lege in ChurchTools eine eigene Person an, z.B. „Website“.
 2. Gib ihr nur das Recht, die gewünschten **öffentlichen Kalender zu sehen** – sonst nichts.
-3. Öffne bei dieser Person den Reiter **Berechtigungen** und kopiere den **Login-Token**.
+3. Melde dich in ChurchTools **als diese Person** an. Öffne im Personenmodul die eigene Person, klicke bei **Berechtigungen** auf den Stift und kopiere den **Login-Token**.
+   Der Login-Token wird nur bei der eigenen Person angezeigt – als Administrator siehst du ihn bei anderen Personen nicht.
 
 > **Wichtig:** Der Token steht später im Quelltext deiner Website und ist damit für jeden sichtbar.
 > Gib dieser Person deshalb wirklich nur Leserechte auf Kalender, die ohnehin öffentlich sein sollen.
@@ -41,13 +40,13 @@ Der Browser lädt die Termine direkt aus ChurchTools. Das erlaubt er nur, wenn C
 
 1. Öffne in ChurchTools die **Systemeinstellungen → Integrationen → Cross-Origin Resource Sharing** ([Anleitung in der ChurchTools Academy](https://churchtools.academy/en/help/system-settings/api-en/cors/)).
 2. Trage die Adresse deiner Website ein, z.B. `https://www.meinegemeinde.de`. Gibt es sie mit und ohne `www.`, trage beide ein. Genau so schreiben: mit `https://`, **ohne `/` am Ende** – sonst greift die Freigabe nicht.
-3. **Für die Vorschau im Squarespace-Editor** zusätzlich die interne Squarespace-Adresse eintragen, z.B. `https://name-1234.squarespace.com`. Du findest sie in Squarespace unter **Einstellungen → Domains**. Ohne diesen Eintrag bleiben die Termine in der Vorschau leer, auf der veröffentlichten Seite funktionieren sie trotzdem.
+3. **Für die Vorschau im Homepage-Baukasten** zusätzlich dessen interne Adresse eintragen. Bei Squarespace ist das z.B. `https://name-1234.squarespace.com` (zu finden unter **Einstellungen → Domains**). Ohne diesen Eintrag bleiben die Termine in der Vorschau leer, auf der veröffentlichten Seite funktionieren sie trotzdem.
 
 Fehlt die Freigabe, zeigt die Seite statt der Termine „Unsere Termine machen gerade eine kurze Pause“. In der Browser-Konsole steht dann ein CORS-Fehler.
 
 ### 4. Code in die Website einfügen
 
-Füge in Squarespace auf der Terminseite einen Block **„Code“** ein und kopiere den Inhalt von [`examples/termine.html`](examples/termine.html) hinein.
+Füge auf der Terminseite deiner Website einen Code-Block ein (in Squarespace z.B. der Block **„Code“**) und kopiere den Inhalt von [`examples/termine.html`](examples/termine.html) hinein.
 Trage dann oben deine ChurchTools-Adresse, den Token und deine Kalender ein. Fertig.
 
 ```html
@@ -77,7 +76,7 @@ Fehlt eine Pflicht-Einstellung, zeigt die Seite einen Hinweis, was noch fehlt.
 | `headerTitle` | | Überschrift im Kopfbild (Standard: „Bevorstehende Events.“) |
 | `headerImageUrl` | | Hintergrundbild für den Kopfbereich |
 | `primaryColor` | | Farbe für aktive Buttons, z.B. `'#FCC927'` |
-| `selectionMode` | | `'calendar'` (Standard): Buttons für die Kalender, Filter im Menü „Weitere Filter“.<br>`'filter'`: Buttons für die Filter |
+| `selectionMode` | | Welche Buttons über den Terminen erscheinen:<br>`'calendar'` (Standard): ein Button pro Kalender und ein Button „Weitere Filter“ mit den eingestellten Filtern und einer Suche.<br>`'filter'`: nur Buttons für die eingestellten Filter |
 | `selectionLabel` | | Text vor den Buttons, z.B. `'Zeige:'` |
 | `filters` | | Eigene Filter: `{ label: 'Gottesdienste', filter: 'Gottesdienst' }` zeigt alle Termine mit „Gottesdienst“ im Titel.<br>`filter: '__other__'` zeigt alle Termine, die zu keinem anderen Filter passen |
 | `linkButtons` | | Hat ein Termin einen Link mit dieser Adresse, erscheint ein Button: `{ address: 'forms.office.com', label: 'Zur Anmeldung' }`. Sonst wird der Link als Text gezeigt |
@@ -101,7 +100,7 @@ Müsstest du für eine Neuerung deine Einstellungen anpassen, erscheint sie als 
 
 ## Selbst anpassen
 
-Du willst mehr ändern als die Einstellungen? Lade [`termine.js`](termine.js) herunter, passe sie an und lade sie auf deinen eigenen Server oder bei Squarespace als Datei hoch. Dann trägst du deren Adresse statt der jsDelivr-Adresse ein.
+Du willst mehr ändern als die Einstellungen? Lade [`termine.js`](termine.js) herunter, passe sie an und lade sie an einen Ort hoch, von dem deine Website sie laden kann – z.B. auf deinen eigenen Server oder als Datei in deinen Homepage-Baukasten. Dann trägst du deren Adresse statt der jsDelivr-Adresse ein.
 Automatische Updates gibt es dann nicht mehr.
 
 ---
