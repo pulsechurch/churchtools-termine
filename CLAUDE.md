@@ -19,6 +19,8 @@ Die README richtet sich an Gemeinden, die die Skripte einbinden. Diese Datei bes
 
 - Einbindung: `<div id="ct-termine">`, dann `window.CT_CONFIG = {…}`, dann `<script src="https://cdn.jsdelivr.net/gh/pulsechurch/churchtools-termine@1/termine.js" onerror="…">`. Das `onerror` lädt als Ersatzquelle `https://pulsechurch.github.io/churchtools-termine/v1/termine.js`. Vorlagen: `examples/termine.html`, `examples/newsletter.html`.
 - Semantische Versionen als Git-Tags: Fehlerkorrektur `v1.0.1`, neue Funktion `v1.1.0`, inkompatible Änderung `v2.0.0`. `@1` bei jsDelivr zeigt auf den neuesten Tag `v1.*`. Zu jedem Tag ein GitHub-Release mit kurzer Beschreibung der Änderungen.
+- **Stand: noch keine Version veröffentlicht.** Bis zum Tag `v1.0.0` existieren `@1` und die Ersatzquelle `/v1/` nicht. Zum Einbinden und Testen bis dahin `https://cdn.jsdelivr.net/gh/pulsechurch/churchtools-termine@main/termine.js` (ohne `onerror`) verwenden; diesen Absatz beim ersten Tag entfernen.
+- Voraussetzung für Tags: In GitHub muss die Umgebung `github-pages` Deployments von Tags `v*` erlauben (Settings → Environments → github-pages).
 - `.github/workflows/pages.yml`:
   - Tag `v*` → GitHub Pages neu bauen (pro Hauptversion der neueste Stand unter `/vN/`) und den jsDelivr-Cache für `@N` leeren
   - Push auf `main` → jsDelivr-Cache für `@main` leeren (Testseite)
