@@ -40,7 +40,7 @@ Jeder Kalender hat in ChurchTools eine Nummer. Du findest sie z.B. im Abo-Link d
 Der Browser lädt die Termine direkt aus ChurchTools. Das erlaubt er nur, wenn ChurchTools deine Website als erlaubte Adresse kennt.
 
 1. Öffne in ChurchTools die **Systemeinstellungen → Integrationen → Cross-Origin Resource Sharing** ([Anleitung in der ChurchTools Academy](https://churchtools.academy/en/help/system-settings/api-en/cors/)).
-2. Trage die Adresse deiner Website ein, z.B. `https://www.meinegemeinde.de`. Gibt es sie mit und ohne `www.`, trage beide ein.
+2. Trage die Adresse deiner Website ein, z.B. `https://www.meinegemeinde.de`. Gibt es sie mit und ohne `www.`, trage beide ein. Genau so schreiben: mit `https://`, **ohne `/` am Ende** – sonst greift die Freigabe nicht.
 3. **Für die Vorschau im Squarespace-Editor** zusätzlich die interne Squarespace-Adresse eintragen, z.B. `https://name-1234.squarespace.com`. Du findest sie in Squarespace unter **Einstellungen → Domains**. Ohne diesen Eintrag bleiben die Termine in der Vorschau leer, auf der veröffentlichten Seite funktionieren sie trotzdem.
 
 Fehlt die Freigabe, zeigt die Seite statt der Termine „Unsere Termine machen gerade eine kurze Pause“. In der Browser-Konsole steht dann ein CORS-Fehler.
